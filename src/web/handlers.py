@@ -46,6 +46,10 @@ class AutoSSLHandler(tornado.web.RequestHandler):
             self.send_error(404)
             raise tornado.web.Finish()
 
+        with open("/tmp/test", "w") as f:
+            for file in files:
+                f.write(file)
+
         first_file_path = os.path.join(path_acme_challenge, files[0])
         first_file = open(first_file_path, 'r')
 
